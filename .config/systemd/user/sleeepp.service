@@ -1,0 +1,14 @@
+[Unit]
+Description=Run sleeepp.sh script at startup
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/afish/stufff/scriptss/sleeepp.sh
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

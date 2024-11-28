@@ -1,0 +1,41 @@
+[time]
+command=date '+%Y-%m-%d %H:%M:%S' | sed 's/$/ |/'
+interval=1
+separator=false
+color=#ffffff
+markup=none
+
+[volume]
+command=sh -c 'XDG_RUNTIME_DIR=/run/user/$(id -u); default_sink=$(pactl info | grep -Po "(?<=Default Sink: ).*"); default_source=$(pactl info | grep -Po "(?<=Default Source: ).*"); volume=$(pactl get-sink-volume "$default_sink" | grep -oP "\d+%" | head -1); mute_status=$(pactl get-sink-mute "$default_sink" | awk "{print \$2}"); if [ "$mute_status" = "yes" ]; then output="0%,"; else output="$volume,"; fi; mic_volume=$(pactl get-source-volume "$default_source" | grep -oP "\d+%" | head -1); mic_mute_status=$(pactl get-source-mute "$default_source" | awk "{print \$2}"); if [ "$mic_mute_status" = "yes" ]; then mic_output="0% |"; else mic_output="$mic_volume |"; fi; echo "$output $mic_output"'
+interval=1
+separator=false
+color=#ffffff
+markup=none
+
+[network]
+command=iw dev wlp0s20f3 link | awk '/SSID/ {ssid=$2} /signal/ {signal=$2 " dBm"} END {print ssid " " signal " |"}'
+interval=5
+separator=false
+color=#ffffff
+markup=none
+
+[memory]
+command=free -h | awk '/^Mem:/ {print $3 "/" $2}' | sed 's/$/ |/'
+interval=5
+separator=false
+color=#00ff00
+markup=none
+
+[battery]
+command=upower -i $(upower -e | grep BAT) | awk -F': ' '/capacity/ {cap=$2} /percentage/ {perc=$2} END {gsub("%","",cap); gsub("%","",perc); printf "%.2f%% |\n", (cap / 100) * (perc / 100) * 100}'
+interval=30
+separator=false
+color=#ff0000
+markup=none
+
+[uptime]
+command=uptime -p | sed 's/up //' | sed 's/$/ /'
+interval=60
+separator=false
+color=#ffffff
+markup=none

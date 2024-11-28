@@ -1,0 +1,54 @@
+! Location: ~/.Xresources
+! Basic settings
+UXTerm*termName: xterm-256color
+UXTerm*renderFont: true
+UXTerm*faceName: Hack Nerd Font, DejaVu Sans Mono
+UXTerm*faceSize: 11
+UXTerm*utf8: 2
+UXTerm*locale: true
+
+! Window size
+UXTerm*VT100.geometry: 80x25
+
+! Scrollback
+UXTerm*saveLines: 4096
+
+! Colors
+UXTerm*background: #000000
+UXTerm*foreground: #ffffff
+UXTerm*cursorColor: #ff0000 
+
+! Copy/paste and key bindings
+UXTerm*selectToClipboard: true
+UXTerm*translations: #override \n\
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+! Double-click to select whole URLs
+UXTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+! Colors (Optional - uncomment if you want colored terminal)
+! black
+!UXTerm*color0: rgb:0/0/0
+!UXTerm*color8: rgb:75/77/73
+! red
+!UXTerm*color1: rgb:cc/00/00
+!UXTerm*color9: rgb:ef/29/29
+! green
+!UXTerm*color2: rgb:4e/9a/06
+!UXTerm*color10: rgb:8a/e2/34
+! yellow
+!UXTerm*color3: rgb:c4/a0/00
+!UXTerm*color11: rgb:fc/e9/4f
+! blue
+!UXTerm*color4: rgb:34/65/a4
+!UXTerm*color12: rgb:72/9f/cf
+! magenta
+!UXTerm*color5: rgb:75/50/7b
+!UXTerm*color13: rgb:ad/7f/a8
+! cyan
+!UXTerm*color6: rgb:06/98/9a
+!UXTerm*color14: rgb:34/e2/e2
+! white
+!UXTerm*color7: rgb:d3/d7/cf
+!UXTerm*color15: rgb:ee/ee/ec

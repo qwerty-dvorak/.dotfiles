@@ -1,0 +1,141 @@
+-- Basic Neovim configuration
+-- Bootstrap packer if it's not already installed
+local fn = vim.fn
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  vim.cmd [[packadd packer.nvim]]
+end
+
+-- Autocommand to reload Neovim whenever you save this init.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost init.lua source <afile> | PackerSync
+  augroup end
+]]
+
+-- Packer configuration
+require('packer').startup(function(use)
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
+
+  -- Essential plugins
+  use {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
+    config = function()
+      require('mason').setup()
+      require('mason-lspconfig').setup({
+        ensure_installed = { 'lua_ls', 'pyright', 'gopls' } -- Add LSPs as needed
+      })
+      local lspconfig = require('lspconfig')
+      lspconfig.lua_ls.setup {}
+      lspconfig.pyright.setup {}
+      lspconfig.tsserver.setup {}
+    end
+  }
+
+  -- Treesitter for syntax highlighting
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = { "lua", "python", "javascript", "html", "css" }, -- Add languages as needed
+        highlight = { enable = true },
+      }
+    end
+  }
+
+  -- Autocompletion
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'L3MON4D3/LuaSnip' -- Snippet engine
+    },
+    config = function()
+      local cmp = require('cmp')
+      cmp.setup {
+        snippet = {
+          expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+          end
+        },
+        mapping = {
+          ['<C-n>'] = cmp.mapping.select_next_item(),
+          ['<C-p>'] = cmp.mapping.select_prev_item(),
+          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+          ['<C-e>'] = cmp.mapping.close(),
+        },
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'buffer' },
+          { name = 'path' }
+        })
+      }
+    end
+  }
+
+  -- File explorer
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('nvim-tree').setup()
+    end
+  }
+
+  -- Statusline
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    config = function()
+      require('lualine').setup {
+        options = {
+          theme = 'gruvbox'
+        }
+      }
+    end
+  }
+end)
+
+
+-- Line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Indentation
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+
+-- Search settings
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+
+-- Visual
+vim.opt.termguicolors = true
+vim.opt.wrap = false
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+
+-- System
+vim.opt.backup = true
+vim.opt.swapfile = true
+vim.opt.updatetime = 50
+
+-- Mouse support
+vim.opt.mouse = "a"
+
+-- Clipboard
+vim.opt.clipboard = "unnamedplus"

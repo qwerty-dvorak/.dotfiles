@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#08C" />
+    <title>Arch Linux - Pacman Mirrorlist Generator</title>
+    <link rel="stylesheet" type="text/css" href="/static/archweb.c14f689ce114.css" media="screen" />
+    <link rel="icon" type="image/png" href="/static/favicon.51c13517c44c.png" />
+    <link rel="shortcut icon" type="image/png" href="/static/favicon.51c13517c44c.png" />
+    <link rel="apple-touch-icon" href="/static/logos/apple-touch-icon-57x57.0cd0ab3349e2.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/logos/apple-touch-icon-72x72.e502bac6368f.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/logos/apple-touch-icon-114x114.343cca8f850e.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/logos/apple-touch-icon-144x144.38cf584757c3.png" />
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch/packages/" title="Arch Linux Packages" />
+    
+</head>
+<body class="">
+    <div id="archnavbar" class="anb-home">
+        <div id="archnavbarlogo"><h1><a href="/" title="Return to the main page">Arch Linux</a></h1></div>
+        <div id="archnavbarmenu">
+            <ul id="archnavbarlist">
+                <li id="anb-home"><a href="/" title="Arch news, packages, projects and more">Home</a></li>
+                <li id="anb-packages"><a href="/packages/" title="Arch Package Database">Packages</a></li>
+                <li id="anb-forums"><a href="https://bbs.archlinux.org/" title="Community forums">Forums</a></li>
+                <li id="anb-wiki"><a href="https://wiki.archlinux.org/" title="Community documentation">Wiki</a></li>
+                <li id="anb-gitlab"><a href="https://gitlab.archlinux.org/archlinux" title="GitLab">GitLab</a></li>
+                <li id="anb-security"><a href="https://security.archlinux.org/" title="Arch Linux Security Tracker">Security</a></li>
+                <li id="anb-aur"><a href="https://aur.archlinux.org/" title="Arch Linux User Repository">AUR</a></li>
+                <li id="anb-download"><a href="/download/" title="Get Arch Linux">Download</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div id="archdev-navbar">
+            
+        </div>
+        
+        
+<div id="mirrorlist-gen" class="box">
+
+    <h2>Pacman Mirrorlist Generator</h2>
+
+    <p>This page generates the most up-to-date mirrorlist possible for Arch
+    Linux. The data used here comes straight from the developers' internal
+    mirror database used to track mirror availability and tiering. There are
+    two main options: get a mirrorlist with every available mirror, or get a
+    mirrorlist tailored to your geography.</p>
+
+    <h3>Mirrorlist with all available mirrors</h3>
+
+    <p>An up-to-date mirrorlist is available containing all currently active
+    mirrors, optionally filtering by protocol. These URLs requires no GET or
+    POST parameters so they can be fetched from the command line if desired.<p>
+
+    <ul>
+        <li><a href="all/">All mirrors</a></li>
+        <li><a href="all/http/">All mirrors, HTTP only</a></li>
+        <li><a href="all/https/">All mirrors, HTTPS only</a></li>
+    </ul>
+
+    <h3>Customized by country mirrorlist</h3>
+
+    <p>The following form can generate a custom up-to-date
+    <a href="https://wiki.archlinux.org/title/Pacman"
+        title="ArchWiki: Pacman">pacman</a> mirrorlist based on geography and
+    desired protocol(s).  Simply replace the contents of
+    <code>/etc/pacman.d/mirrorlist</code> with your generated list.
+    Additionally, the mirror status data can be incorporated into the generated
+    mirror list and used to only list up to date mirrors.</p>
+
+    <form id="list-generator" method="get">
+        <div>
+    <label for="id_country">Country:</label>
+
+
+<ul class="errorlist"><li>Select a valid choice. LK is not one of the available choices.</li></ul>
+<select name="country" size="12" aria-invalid="true" id="id_country" multiple>
+  <option value="all">All</option>
+
+  <option value="AL">Albania</option>
+
+  <option value="AU">Australia</option>
+
+  <option value="AT">Austria</option>
+
+  <option value="AZ">Azerbaijan</option>
+
+  <option value="BD" selected>Bangladesh</option>
+
+  <option value="BY">Belarus</option>
+
+  <option value="BE">Belgium</option>
+
+  <option value="BA">Bosnia and Herzegovina</option>
+
+  <option value="BR">Brazil</option>
+
+  <option value="BG">Bulgaria</option>
+
+  <option value="KH">Cambodia</option>
+
+  <option value="CA">Canada</option>
+
+  <option value="CL">Chile</option>
+
+  <option value="CN">China</option>
+
+  <option value="CO">Colombia</option>
+
+  <option value="HR">Croatia</option>
+
+  <option value="CZ">Czechia</option>
+
+  <option value="DK">Denmark</option>
+
+  <option value="EC">Ecuador</option>
+
+  <option value="EE">Estonia</option>
+
+  <option value="FI">Finland</option>
+
+  <option value="FR">France</option>
+
+  <option value="GE">Georgia</option>
+
+  <option value="DE">Germany</option>
+
+  <option value="GR">Greece</option>
+
+  <option value="HK">Hong Kong</option>
+
+  <option value="HU">Hungary</option>
+
+  <option value="IS">Iceland</option>
+
+  <option value="IN" selected>India</option>
+
+  <option value="ID">Indonesia</option>
+
+  <option value="IR">Iran</option>
+
+  <option value="IL">Israel</option>
+
+  <option value="IT">Italy</option>
+
+  <option value="JP">Japan</option>
+
+  <option value="KZ">Kazakhstan</option>
+
+  <option value="KE">Kenya</option>
+
+  <option value="LV">Latvia</option>
+
+  <option value="LT">Lithuania</option>
+
+  <option value="LU">Luxembourg</option>
+
+  <option value="MU">Mauritius</option>
+
+  <option value="MX">Mexico</option>
+
+  <option value="MD">Moldova</option>
+
+  <option value="NP">Nepal</option>
+
+  <option value="NL">Netherlands</option>
+
+  <option value="NC">New Caledonia</option>
+
+  <option value="NZ">New Zealand</option>
+
+  <option value="MK">North Macedonia</option>
+
+  <option value="NO">Norway</option>
+
+  <option value="PY">Paraguay</option>
+
+  <option value="PL">Poland</option>
+
+  <option value="PT">Portugal</option>
+
+  <option value="RO">Romania</option>
+
+  <option value="RU">Russia</option>
+
+  <option value="RE">Réunion</option>
+
+  <option value="SA">Saudi Arabia</option>
+
+  <option value="RS">Serbia</option>
+
+  <option value="SG" selected>Singapore</option>
+
+  <option value="SK">Slovakia</option>
+
+  <option value="SI">Slovenia</option>
+
+  <option value="ZA">South Africa</option>
+
+  <option value="KR">South Korea</option>
+
+  <option value="ES">Spain</option>
+
+  <option value="SE">Sweden</option>
+
+  <option value="CH">Switzerland</option>
+
+  <option value="TW">Taiwan</option>
+
+  <option value="TH">Thailand</option>
+
+  <option value="TR">Türkiye</option>
+
+  <option value="UA">Ukraine</option>
+
+  <option value="GB">United Kingdom</option>
+
+  <option value="US">United States</option>
+
+  <option value="UZ">Uzbekistan</option>
+
+  <option value="VN">Vietnam</option>
+
+</select>
+    
+</div>
+
+  <div>
+    <fieldset>
+  <legend>Protocol:</legend>
+
+
+
+<div id="id_protocol"><div>
+    <label for="id_protocol_0"><input type="checkbox" name="protocol" value="http" id="id_protocol_0">
+ http</label>
+
+</div><div>
+    <label for="id_protocol_1"><input type="checkbox" name="protocol" value="https" id="id_protocol_1" checked>
+ https</label>
+
+</div>
+</div>
+</fieldset>
+    
+</div>
+
+  <div>
+    <fieldset>
+  <legend>IP version:</legend>
+
+
+
+<div id="id_ip_version"><div>
+    <label for="id_ip_version_0"><input type="checkbox" name="ip_version" value="4" id="id_ip_version_0">
+ IPv4</label>
+
+</div><div>
+    <label for="id_ip_version_1"><input type="checkbox" name="ip_version" value="6" id="id_ip_version_1">
+ IPv6</label>
+
+</div>
+</div>
+</fieldset>
+    
+</div>
+
+  <div>
+    <label for="id_use_mirror_status">Use mirror status:</label>
+
+
+
+<input type="checkbox" name="use_mirror_status" id="id_use_mirror_status" checked>
+    
+      
+    
+</div>
+        <p><label></label> <input type="submit" value="Generate List" /></p>
+    </form>
+</div>
+
+        <div id="footer">
+            <p>Copyright © 2002-2024 <a href="mailto:jvinet@zeroflux.org"
+                title="Contact Judd Vinet">Judd Vinet</a>, <a href="mailto:aaron@archlinux.org"
+                title="Contact Aaron Griffin">Aaron Griffin</a> and
+                <a href="mailto:anthraxx@archlinux.org" title="Contact Levente Polyák">Levente Polyák</a>.</p>
+
+            <p>The Arch Linux name and logo are recognized
+            <a href="https://terms.archlinux.org/docs/trademark-policy/"
+                title="Arch Linux Trademark Policy">trademarks</a>. Some rights reserved.</p>
+
+            <p>The registered trademark Linux® is used pursuant to a sublicense from LMI,
+            the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide basis.</p>
+        </div>
+    </div>
+    <script type="application/ld+json">
+    {
+       "@context": "http://schema.org",
+       "@type": "WebSite",
+       "url": "/",
+       "potentialAction": {
+         "@type": "SearchAction",
+         "target": "/packages/?q={search_term}",
+         "query-input": "required name=search_term"
+       }
+    }
+    </script>
+    
+</body>
+</html>

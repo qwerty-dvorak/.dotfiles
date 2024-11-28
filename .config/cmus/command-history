@@ -1,0 +1,23 @@
+q
+add 12322
+add 11. Olivia Rodrigo - hope ur ok.flac
+add 10. Olivia Rodrigo - favorite crime.flac
+add 09. Olivia Rodrigo - jealousy, jealousy.flac
+add 08. Olivia Rodrigo - happier.flac
+add 07. Olivia Rodrigo - enough for you.flac
+add 06. Olivia Rodrigo - good 4 u.flac
+add 05. Olivia Rodrigo - deja vu.flac
+add 04. Olivia Rodrigo - 1 step forward, 3 steps back.flac
+add 03. Olivia Rodrigo - drivers license.flac
+add 02. Olivia Rodrigo - traitor.flac
+add 01. Olivia Rodrigo - brutal.flac
+add 
+youtube https://youtu.be/ZWDoUsxpkKE?si=fEOPctTLCX6sZFMF
+save
+set output_plugin=pulse
+:set output_plugin=alsa
+add Darling, I
+help
+add
+youtube https://youtu.be/ZWDoUsxpkKE?si=UFT_olrDzBXVrnf2
+man cmus
